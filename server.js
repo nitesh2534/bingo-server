@@ -23,13 +23,11 @@ const bodyParser = require('body-parser');
     		let session = JSON.parse(data);
     		if(session.length === 100){
                 session = [];
-                console.log('asd' + session);
                 fs.writeFile('./numbers.json',JSON.stringify(session));
             	res.send({'msg': 'END OF THE GAME'});
 
         	}else if(session.indexOf(randomNumber) < 0) {
    	     		session.push(randomNumber);
-   	     		console.log('phani: ' + JSON.stringify(session));
         		fs.writeFile('./numbers.json', JSON.stringify(session));
         		res.send({number: randomNumber});
     		}
@@ -70,7 +68,6 @@ const bodyParser = require('body-parser');
 		} else {
             session = [];
             fs.writeFile('./numbers.json', JSON.stringify(session));
-            console.log('user has won the game');
             res.send({'msg': 'has won the game'});
             res.end();
 		}
